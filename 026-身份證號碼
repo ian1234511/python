@@ -1,0 +1,32 @@
+def check_id_number(h):
+    a = {
+        'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15, 'G': 16, 'H': 17, 'I': 34, 'J': 18, 'K': 19,
+        'L': 20, 'M': 21, 'N': 22, 'O': 35, 'P': 23, 'Q': 24, 'R': 25, 'S': 26, 'T': 27, 'U': 28, 'V': 29,
+        'W': 32, 'X': 30, 'Y': 31, 'Z': 33
+    }
+    if len(h) != 10:
+        return 'F'
+    d = h[0]
+    if d not in a:
+        return 'F'
+    n1 = a[d] // 10
+    n2 = a[d] % 10
+    try:
+        numbers = [int(c) for c in id_number[1:]]
+    except ValueError:
+        return 'F'
+    if len(numbers) != 9:
+        return 'F'
+    if numbers[0] not in [1, 2]:
+        return 'F'
+    f= [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1]
+    g= n1 * f[0] + n2 * f[1]
+    g += sum(numbers[i] * f[i + 2] for i in range(9))
+    if g % 10 == 0:
+        return 'T'
+    else:
+        return 'F'
+n = int(input())
+for _ in range(n):
+    c = input().strip()
+    print(check_id_number(c))
