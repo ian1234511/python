@@ -1,12 +1,12 @@
-n = int(input())
-for _ in range(n):
-    s = input().strip()
-    score = 0
-    current_streak = 0
-    for char in s:
+d = int(input())
+for _ in range(d):
+    k = input().strip()
+    j = 0
+    l = 0
+    for char in k:
         if char == 'O':
-            current_streak += 1
-            score += current_streak
+            l += 1
+            j += l
         else:
-            current_streak = 0
-    print(score)
+            l = 0
+    print(j)
